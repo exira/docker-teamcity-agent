@@ -1,0 +1,15 @@
+version: '2'
+services:
+  teamcity:
+    image: sashgorokhov/teamcity
+    ports:
+      - "0.0.0.0:8111:8111"
+  teamcity_agent:
+    build: .
+    links:
+      - "teamcity:teamcity"
+    depends_on:
+      - teamcity
+    environment:
+      SERVER_URL: teamcity:8111
+      AGENT_N: 1
