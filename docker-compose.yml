@@ -5,7 +5,7 @@ services:
     ports:
       - "0.0.0.0:8111:8111"
   teamcity_agent:
-    image: sashgorokhov/teamcity_agent
+    image: sashgorokhov/teamcity-agent
     links:
       - "teamcity:teamcity"
     depends_on:
