@@ -1,22 +1,5 @@
-FROM java:8-jre
+FROM sashgorokhov/teamcity-agent
 MAINTAINER Alexander Gorokhov <sashgorokhov@gmail.com>
 
-RUN apt-get install -y unzip
-
-ENV SERVER_URL="" \
-    AGENT_N="1" \
-    AGENT_DIR="/opt/teamcity_agent" \
-    AGENT_OWN_ADDRESS="" \
-    AGENT_OWN_PORT="9090"
-
-ENV AGENT_NAME="Dockerized Agent #"$AGENT_N \
-    AGENT_WORKDIR=$AGENT_DIR"/work_dir" \
-    AGENT_TEMPDIR=$AGENT_DIR"/temp_dir"
-
-WORKDIR $AGENT_DIR
-EXPOSE $AGENT_OWN_PORT
-VOLUME $AGENT_WORKDIR $AGENT_TEMPDIR
-
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT /entrypoint.sh
+RUN apt-get update && \
+    apt-get install -y python3 python3-dev python3-pip
