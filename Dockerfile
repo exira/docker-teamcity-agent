@@ -13,13 +13,13 @@ ENV AGENT_NAME="Dockerized Agent #"$AGENT_N \
     AGENT_WORKDIR=$AGENT_DIR"/work_dir" \
     AGENT_TEMPDIR=$AGENT_DIR"/temp_dir"
 
-WORKDIR $AGENT_DIR
 EXPOSE $AGENT_OWN_PORT
 VOLUME $AGENT_WORKDIR $AGENT_TEMPDIR
 
-ADD https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz /usr/bin/
-RUN chmod +x /usr/bin/docker
+ADD https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz /
+RUN tar -xvzf /docker-latest.tgz && rm /docker-latest.tgz && chmod +x /usr/local/bin/docker
 
+WORKDIR $AGENT_DIR
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT /entrypoint.sh
