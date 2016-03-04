@@ -17,6 +17,9 @@ WORKDIR $AGENT_DIR
 EXPOSE $AGENT_OWN_PORT
 VOLUME $AGENT_WORKDIR $AGENT_TEMPDIR
 
+ADD https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz /usr/bin/
+RUN chmod +x /usr/bin/docker
+
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT /entrypoint.sh
