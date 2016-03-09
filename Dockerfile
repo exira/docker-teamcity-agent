@@ -4,22 +4,19 @@ MAINTAINER Alexander Gorokhov <sashgorokhov@gmail.com>
 RUN apt-get install -y unzip
 
 ENV SERVER_URL="" \
-    AGENT_N="1" \
-    AGENT_DIR="/opt/teamcity_agent" \
     AGENT_OWN_ADDRESS="" \
-    AGENT_OWN_PORT="9090"
-
-ENV AGENT_NAME="Dockerized Agent #"$AGENT_N \
-    AGENT_WORKDIR=$AGENT_DIR"/work_dir" \
+    AGENT_OWN_PORT="9090" \
+    AGENT_NAME="" \
+    AGENT_DIR="/opt/teamcity_agent"
+ENV AGENT_WORKDIR=$AGENT_DIR"/work_dir" \
     AGENT_TEMPDIR=$AGENT_DIR"/temp_dir"
 
 EXPOSE $AGENT_OWN_PORT
 VOLUME $AGENT_WORKDIR $AGENT_TEMPDIR
-
-ADD https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz /
-RUN tar -xvzf /docker-latest.tgz && rm /docker-latest.tgz && chmod +x /usr/local/bin/docker
-
 WORKDIR $AGENT_DIR
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT /entrypoint.sh
+
+RUN mkdir /agent-init.d
+COPY /setup_docker.sh /agent-init.d/
+
+COPY setup_agent.sh /
+CMD /setup_agent.sh && $AGENT_DIR/bin/agent.sh run
