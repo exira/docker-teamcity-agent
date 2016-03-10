@@ -55,8 +55,8 @@ Using host's docker-machine: `-v /usr/local/bin/docker-machine:/bin/docker-machi
 
 # Using with Teamcity Server docker image 
 In this example will be used [this docker image](https://hub.docker.com/r/sashgorokhov/teamcity/)
-
-
+Example [compose file](https://github.com/sashgorokhov/docker-teamcity-agent/blob/master/docker-compose.yml)
+Starts one agent by default. To start more, use `docker-compose scale teamcity-agent=3`.
 
 # Supported Docker versions
 
