@@ -17,6 +17,7 @@ WORKDIR $AGENT_DIR
 
 RUN mkdir /agent-init.d
 COPY /setup_docker.sh /agent-init.d/
+COPY /setup_npm.sh /agent-init.d/
 
 COPY setup_agent.sh /
 CMD /setup_agent.sh && $AGENT_DIR/bin/agent.sh run
