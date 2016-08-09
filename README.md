@@ -1,6 +1,6 @@
 # TeamCity
 
-[![](https://images.microbadger.com/badges/image/exira/teamcity-agent.svg)](https://imagelayers.io/?images=exira/teamcity-agent:latest)
+[![](https://images.microbadger.com/badges/image/exira/teamcity-agent.svg)](https://microbadger.com/#/images/exira/teamcity-agent)
 
 TeamCity is a Java-based build management and continuous integration server from JetBrains.
 
