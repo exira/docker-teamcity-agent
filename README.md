@@ -1,10 +1,6 @@
-# Supported tags and respective `Dockerfile` links
-
--	[`latest` (*Dockerfile*)](https://github.com/exira/docker-teamcity-agent/blob/master/Dockerfile)
-
-[![](https://badge.imagelayers.io/exira/teamcity-agent:latest.svg)](https://imagelayers.io/?images=exira/teamcity-agent:latest 'Get your own badge on imagelayers.io')
-
 # TeamCity
+
+[![](https://images.microbadger.com/badges/image/exira/teamcity-agent.svg)]https://imagelayers.io/?images=exira/teamcity-agent:latest)
 
 TeamCity is a Java-based build management and continuous integration server from JetBrains.
 
