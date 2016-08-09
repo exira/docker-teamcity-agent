@@ -1,8 +1,8 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`latest` (*Dockerfile*)](https://github.com/sashgorokhov/docker-teamcity-agent/blob/master/Dockerfile)
+-	[`latest` (*Dockerfile*)](https://github.com/exira/docker-teamcity-agent/blob/master/Dockerfile)
 
-[![](https://badge.imagelayers.io/sashgorokhov/teamcity-agent:latest.svg)](https://imagelayers.io/?images=sashgorokhov/teamcity-agent:latest 'Get your own badge on imagelayers.io')
+[![](https://badge.imagelayers.io/exira/teamcity-agent:latest.svg)](https://imagelayers.io/?images=exira/teamcity-agent:latest 'Get your own badge on imagelayers.io')
 
 # TeamCity
 
@@ -13,7 +13,7 @@ TeamCity is a Java-based build management and continuous integration server from
 # How to use this image
 
 ```console
-$ docker run --name teamcity-agent -p 9090:9090 -e SERVER_URL=http://example.com -d sashgorokhov/teamcity-agent
+$ docker run --name teamcity-agent -p 9090:9090 -e SERVER_URL=http://example.com -d exira/teamcity-agent
 ```
 
 This will start a Teamcity agent listening on the default port of 9090.
@@ -52,16 +52,3 @@ All you must to do is to mount your host's docker socket via `-v /var/run/docker
 Using host's docker-compose: `-v /usr/local/bin/docker-compose:/bin/docker-compose`
 
 Using host's docker-machine: `-v /usr/local/bin/docker-machine:/bin/docker-machine`
-
-# Using with Teamcity Server docker image 
-In this example will be used [this docker image](https://hub.docker.com/r/sashgorokhov/teamcity/)
-Example [compose file](https://github.com/sashgorokhov/docker-teamcity-agent/blob/master/docker-compose.yml)
-Starts one agent by default. To start more, use `docker-compose scale teamcity-agent=3`.
-
-# Supported Docker versions
-
-This image is officially supported on Docker version 1.10.2.
-
-Support for older versions (down to 1.6) is provided on a best-effort basis.
-
-Please see [the Docker installation documentation](https://docs.docker.com/installation/) for details on how to upgrade your Docker daemon.
