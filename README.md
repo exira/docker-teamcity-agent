@@ -1,4 +1,4 @@
-# TeamCity
+# TeamCity Agent
 
 ![teamcity-agent v1](https://img.shields.io/badge/teamcity--agent-v1-brightgreen.svg?style=flat-square) [![](https://images.microbadger.com/badges/image/exira/teamcity-agent.svg)](https://microbadger.com/#/images/exira/teamcity-agent)
 
