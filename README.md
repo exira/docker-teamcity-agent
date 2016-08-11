@@ -1,6 +1,6 @@
 # TeamCity
 
-[![](https://images.microbadger.com/badges/image/exira/teamcity-agent.svg)](https://microbadger.com/#/images/exira/teamcity-agent)
+![teamcity-agent v1](https://img.shields.io/badge/teamcity--agent-v1-brightgreen.svg?style=flat-square) [![](https://images.microbadger.com/badges/image/exira/teamcity-agent.svg)](https://microbadger.com/#/images/exira/teamcity-agent)
 
 TeamCity is a Java-based build management and continuous integration server from JetBrains.
 
@@ -9,7 +9,7 @@ TeamCity is a Java-based build management and continuous integration server from
 # How to use this image
 
 ```console
-$ docker run --name teamcity-agent -p 9090:9090 -e SERVER_URL=http://example.com -d exira/teamcity-agent
+$ docker run --name teamcity-agent -p 9090:9090 -e SERVER_URL=http://example.com -d exira/teamcity-agent:1
 ```
 
 This will start a Teamcity agent listening on the default port of 9090.
@@ -41,9 +41,9 @@ For example, you can mount such scripts as `-v /path/script.sh:/agent-init.d/scr
 # Using host's docker engine within agent container
 
 If you want to be able to build, run, compose docker in builds running by agent container, there are good news for you:
-this image has a pre-installed docker client. 
+this image has a pre-installed docker client.
 
-All you must to do is to mount your host's docker socket via `-v /var/run/docker.sock:/var/run/docker.sock`. And you will be able to use your hosts docker engine! 
+All you must to do is to mount your host's docker socket via `-v /var/run/docker.sock:/var/run/docker.sock`. And you will be able to use your hosts docker engine!
 
 Using host's docker-compose: `-v /usr/local/bin/docker-compose:/bin/docker-compose`
 
