@@ -1,4 +1,5 @@
 version: '2'
+
 services:
   teamcity:
     restart: unless-stopped
@@ -7,9 +8,10 @@ services:
       - "0.0.0.0:8111:8111"
     volumes:
       - "/mnt/teamcity:/mnt/teamcity"
+
   teamcity_agent:
     restart: unless-stopped
-    image: sashgorokhov/teamcity-agent
+    image: exira/teamcity-agent:4
     links:
       - "teamcity:teamcity"
     environment:
