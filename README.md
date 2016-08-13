@@ -9,7 +9,7 @@ TeamCity is a Java-based build management and continuous integration server from
 # How to use this image
 
 ```console
-$ docker run --name teamcity-agent -p 9090:9090 -e SERVER_URL=http://example.com -d exira/teamcity-agent:3
+$ docker run --name teamcity-agent -p 9090:9090 -e SERVER_URL=http://example.com -d exira/teamcity-agent:1
 ```
 
 This will start a Teamcity agent listening on the default port of 9090.
