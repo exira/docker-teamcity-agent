@@ -1,15 +1,17 @@
 version: '2'
+
 services:
   teamcity:
     restart: unless-stopped
-    image: sashgorokhov/teamcity
+    image: exira/teamcity
     ports:
       - "0.0.0.0:8111:8111"
     volumes:
       - "/mnt/teamcity:/mnt/teamcity"
+
   teamcity_agent:
     restart: unless-stopped
-    image: sashgorokhov/teamcity-agent
+    image: exira/teamcity-agent
     links:
       - "teamcity:teamcity"
     environment:
