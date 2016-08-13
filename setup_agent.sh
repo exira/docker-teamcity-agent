@@ -6,17 +6,30 @@ if [ -z "$SERVER_URL" ]; then
     exit 1
 fi
 
-waiting=0
-until curl -sfIX GET $SERVER_URL/update/buildAgent.zip; do
-    let waiting+=3
-    sleep 3
-    if [ $waiting -eq 180 ]; then
-        echo "Teamcity server did not respond within 180 seconds"
-        exit 2
-    fi
-done
+if [ -f "${AGENT_DIR}/conf/buildAgent.properties" ]; then
+    echo "=> Agent has been created before, skipping ..."
+else
+    waiting=0
+    until curl -sfIX GET $SERVER_URL/update/buildAgent.zip; do
+        let waiting+=3
+        sleep 3
+        if [ $waiting -eq 180 ]; then
+            echo "Teamcity server did not respond within 180 seconds"
+            exit 2
+        fi
+    done
 
-wget ${SERVER_URL}/update/buildAgent.zip && unzip -d ${AGENT_DIR} buildAgent.zip && rm buildAgent.zip
+    wget ${SERVER_URL}/update/buildAgent.zip && unzip -d ${AGENT_DIR} buildAgent.zip && rm buildAgent.zip
+
+    echo Running init scripts...
+    for f in /agent-init.d/*; do
+        case "$f" in
+            *.sh)     echo "$0: running $f"; . "$f" ;;
+            *)        echo "$0: ignoring $f" ;;
+        esac
+        echo
+    done
+fi
 
 echo "serverUrl=${SERVER_URL}" > ${AGENT_DIR}/conf/buildAgent.properties
 echo "workDir=${AGENT_WORKDIR}" >> ${AGENT_DIR}/conf/buildAgent.properties
@@ -31,12 +44,3 @@ if [ -n "$AGENT_OWN_ADDRESS" ]; then
 fi
 
 chmod +x ${AGENT_DIR}/bin/agent.sh
-
-echo Running init scripts...
-for f in /agent-init.d/*; do
-	case "$f" in
-		*.sh)     echo "$0: running $f"; . "$f" ;;
-		*)        echo "$0: ignoring $f" ;;
-	esac
-	echo
-done
