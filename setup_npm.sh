@@ -7,3 +7,6 @@ echo Successfully installed Node and NPM
 
 npm install bower -g
 echo Successfully installed Bower
+
+npm install octopus-deploy -g
+echo Successfully installed Octopus Deploy Helpers
