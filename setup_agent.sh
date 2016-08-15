@@ -20,15 +20,6 @@ else
     done
 
     wget ${SERVER_URL}/update/buildAgent.zip && unzip -d ${AGENT_DIR} buildAgent.zip && rm buildAgent.zip
-
-    echo Running init scripts...
-    for f in /agent-init.d/*; do
-        case "$f" in
-            *.sh)     echo "$0: running $f"; . "$f" ;;
-            *)        echo "$0: ignoring $f" ;;
-        esac
-        echo
-    done
 fi
 
 echo "serverUrl=${SERVER_URL}" > ${AGENT_DIR}/conf/buildAgent.properties

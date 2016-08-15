@@ -1,6 +1,6 @@
 # TeamCity Agent
 
-![teamcity-agent v4](https://img.shields.io/badge/teamcity--agent-v4-brightgreen.svg?style=flat-square) [![](https://images.microbadger.com/badges/image/exira/teamcity-agent.svg)](https://microbadger.com/#/images/exira/teamcity-agent)
+![teamcity-agent v5](https://img.shields.io/badge/teamcity--agent-v5-brightgreen.svg?style=flat-square) [![](https://images.microbadger.com/badges/image/exira/teamcity-agent.svg)](https://microbadger.com/#/images/exira/teamcity-agent)
 
 TeamCity is a Java-based build management and continuous integration server from JetBrains.
 
@@ -9,7 +9,7 @@ TeamCity is a Java-based build management and continuous integration server from
 # How to use this image
 
 ```console
-$ docker run --name teamcity-agent -p 9090:9090 -e SERVER_URL=http://example.com -d exira/teamcity-agent:4
+$ docker run --name teamcity-agent -p 9090:9090 -e SERVER_URL=http://example.com -d exira/teamcity-agent:5
 ```
 
 This will start a Teamcity agent listening on the default port of 9090.

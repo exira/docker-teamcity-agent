@@ -11,7 +11,7 @@ services:
 
   teamcity_agent:
     restart: unless-stopped
-    image: exira/teamcity-agent:4
+    image: exira/teamcity-agent:5
     links:
       - "teamcity:teamcity"
     environment:
