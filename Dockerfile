@@ -34,6 +34,11 @@ RUN \
     apt-get update && \
     apt-get install -f -y mono-devel mono-complete referenceassemblies-pcl ca-certificates-mono && \
 
+    # Install F#
+    apt-get clean && \
+    apt-get update && \
+    apt-get install -y fsharp && \
+
     # Install Node, NPM and Octopus Helpers
     curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
     apt-get clean && \
