@@ -42,7 +42,7 @@ RUN \
     # Install .NET Core
     apt-get clean && \
     apt-get update && \
-    apt-get install curl libunwind8 gettext && \
+    apt-get install -y curl libunwind8 gettext && \
     curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID=827530 && \
     mkdir -p /opt/dotnet && sudo tar zxf dotnet.tar.gz -C /opt/dotnet && \
     ln -s /opt/dotnet/dotnet /usr/local/bin && \
